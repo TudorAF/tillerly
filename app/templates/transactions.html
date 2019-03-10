@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<table class =transaction_table>
+	<tr>
+		<th>Date</th>
+		<th>Description</th>
+		<th>Category</th>
+		<th>Account</th>
+		<th>Amount</th>
+	</tr>
+	{% for transaction in transactions %}
+	<tr>
+		<td contenteditable="true">{{ transaction.date }}</td>
+		<td contenteditable="true">{{ transaction.description }}</td>
+		<td contenteditable="true">{{ transaction.category_hint }}</td>
+		<td contenteditable="true">{{ transaction.account_number }}</td>
+		<td contenteditable="true">{{ transaction.amount }}</td>
+	</tr>
+	{% endfor %}
+</table>
+<br>
+{% if prev_url %}
+    <a href="{{ prev_url }}">Newer Transactions</a>
+    {% endif %}
+    {% if next_url %}
+    <a href="{{ next_url }}">Older Transactions</a>
+ {% endif %}
+
+{% endblock %}
